@@ -1,0 +1,19 @@
+{% include 'partials/_header.html' %}
+{% include 'partials/_nav.html' %}
+<body>
+    <h2>Update Icon</h2>
+   <form action="/icons/update/update_listrecord/{{mylist.id}}" method="post">
+       {% csrf_token %}
+       List Name: <br>
+       <input name="l_name" value="{{mylist.icon_img}}">
+       <br><br>
+       List Description: <br>
+       <input name = "l_description" value="{{mylist.icon_description}}">
+       <br><br>
+       {% comment %} Icons: <br>
+       <input name = "time" value="{{mylist.time_todo}}"> {% endcomment %}
+       <br><br>
+       <input type="submit" value="Submit">
+   </form>
+</body>
+{% include 'partials/_footer.html' %}

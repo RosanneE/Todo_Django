@@ -10,4 +10,8 @@ class Icon(models.Model):
 class List(models.Model):
     list_name = models.CharField(max_length=200)
     list_description = models.CharField(max_length=200)
+    icon = models.ManyToManyField(Icon)
+
+    def __str__(self):
+        return self.list_name
   

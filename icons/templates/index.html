@@ -19,15 +19,14 @@
     </table>
     <button> <a href="add/">Add Icon</a></button> 
     <h2>Lists</h2>
-    <table>
-        {% for i in mylists %}
-        <tr>
-            <td>{{i.id}}</td>
-            <td>{{i.list_name}}</td>
-            <td>{{i.list_description}}</td>
-            <!-- <td><a href="/icons/deletelist/{{i.id}}" style="color:red">X</a></td> -->
-            <!-- <td><a href="/icons/updatelist/{{i.id}}">Update</a></td> -->
-        </tr>
+    <table border = '2'>
+        {% for j in mylist %}
+        <tr border ="1">
+            <td>{{j.id}}</td>
+            <td>{{j.list_name}}</td>
+            <td>{{j.list_description}}</td>
+            <td><a href="/icons/delete_list/{{j.id}}" style="color:red">X</a></td> 
+            <td><a href="/icons/update_list/{{j.id}}">Update</a></td>
         {% endfor %}
         
     </table>

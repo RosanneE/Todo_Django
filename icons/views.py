@@ -12,6 +12,22 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
+def home(request):
+    myicons = Icon.objects.all().values()
+    template = loader.get_template('home.html')
+    context = {
+        'myicons': myicons,
+    }
+    return HttpResponse(template.render(context, request))
+    
+def about(request):
+    myicons = Icon.objects.all().values()
+    template = loader.get_template('about.html')
+    context = {
+        'myicons': myicons,
+    }
+    return HttpResponse(template.render(context, request))
+
 def add(request):
     template= loader.get_template('add.html')
     return HttpResponse(template.render({}, request))
@@ -28,6 +44,13 @@ def addrecord(request):
     icon.save()
     return HttpResponseRedirect(reverse('index'))
 
+def add_listrecord(request):
+    a = request.POST['list_name']
+    b = request.POST['list_description']
+    list = List(list_name=a, list_description=b)
+    list.save()
+    return HttpResponseRedirect(reverse('index'))
+
 def delete(request, id):
     icon = Icon.objects.get(id=id)
     icon.delete()
@@ -40,13 +63,6 @@ def update(request, id):
         'myicons': myicons,
     }
     return HttpResponse(template.render(context, request))
-
-def add_listrecord(request):
-    a = request.POST['list_name']
-    b = request.POST['list_description']
-    list = List(list_name=a, list_description=b,)
-    list.save()
-    return HttpResponseRedirect(reverse('index'))
 
 def updaterecord(request, id):
     url = request.POST['url']

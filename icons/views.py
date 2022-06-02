@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 
-from.models import Icon
+from.models import Icon, List
 
 def index(request):
     myicons = Icon.objects.all().values()
@@ -14,6 +14,10 @@ def index(request):
 
 def add(request):
     template= loader.get_template('add.html')
+    return HttpResponse(template.render({}, request))
+
+def add_list(request):
+    template= loader.get_template('add_list.html')
     return HttpResponse(template.render({}, request))
 
 def addrecord(request):
@@ -36,6 +40,13 @@ def update(request, id):
         'myicons': myicons,
     }
     return HttpResponse(template.render(context, request))
+
+def add_listrecord(request):
+    a = request.POST['list_name']
+    b = request.POST['list_description']
+    list = List(list_name=a, list_description=b,)
+    list.save()
+    return HttpResponseRedirect(reverse('index'))
 
 def updaterecord(request, id):
     url = request.POST['url']

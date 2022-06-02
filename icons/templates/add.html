@@ -1,0 +1,17 @@
+<body>
+    <h1>So. Done.</h1>
+    <h2>Add Icon</h2>
+   <form action="addrecord/" method="post">
+       {% csrf_token %}
+       Image Address: <br>
+       <input name="url">
+       <br><br>
+       Icon Description: <br>
+       <input name = "description">
+       <br><br>
+       Time Alloted: <br>
+       <input name = "time">
+       <br><br>
+       <input type="submit" value="Submit">
+   </form>
+</body>

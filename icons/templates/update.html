@@ -1,0 +1,17 @@
+<body>
+    <h1>So. Done.</h1>
+    <h2>Update Icon</h2>
+   <form action="/icons/update/updaterecord/{{myicons.id}}" method="post">
+       {% csrf_token %}
+       Image Address: <br>
+       <input name="url" value="{{myicons.icon_img}}">
+       <br><br>
+       Icon Description: <br>
+       <input name = "description" value="{{myicons.icon_description}}">
+       <br><br>
+       Time Alloted: <br>
+       <input name = "time" value="{{myicons.time_todo}}">
+       <br><br>
+       <input type="submit" value="Submit">
+   </form>
+</body>
